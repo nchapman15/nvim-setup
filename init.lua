@@ -362,11 +362,10 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  clangd = {},
+  gopls = {},
+  pyright = {},
+  tsserver = {},
 
   sumneko_lua = {
     Lua = {
@@ -379,6 +378,7 @@ local servers = {
 -- Setup neovim lua configuration
 require('neodev').setup()
 require('dap-go').setup()
+require('dapui').setup()
 require('nvim-dap-virtual-text').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
