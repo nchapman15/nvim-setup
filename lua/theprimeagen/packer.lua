@@ -26,6 +26,11 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use('mfussenegger/nvim-dap')
+  use('rcarriga/nvim-dap-ui')
+  use('leoluz/nvim-dap-go')
+  use('theHamsta/nvim-dap-virtual-text')
+  use {'neoclide/coc.nvim', branch = 'release'}
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
