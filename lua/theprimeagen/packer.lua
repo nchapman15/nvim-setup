@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('mfussenegger/nvim-dap')
-  use('rcarriga/nvim-dap-ui')
+  use {'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'}}
   use('leoluz/nvim-dap-go')
   use('theHamsta/nvim-dap-virtual-text')
   use {'neoclide/coc.nvim', branch = 'release'}
@@ -57,5 +57,10 @@ return require('packer').startup(function(use)
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
 
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end}
 end)
 
