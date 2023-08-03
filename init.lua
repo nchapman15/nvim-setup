@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -326,6 +327,21 @@ local on_attach = function(_, bufnr)
       desc = 'LSP: ' .. desc
     end
 
+=======
+require("theprimeagen")
+local on_attach = function(_, bufnr)
+  -- NOTE: Remember that lua is a real programming language, and as such it is possible
+  -- to define small helper and utility functions so you don't have to repeat yourself
+  -- many times.
+  --
+  -- In this case, we create a function that lets us more easily define mappings specific
+  -- for LSP related items. It sets the mode, buffer and description for us each time.
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
+
+>>>>>>> prima
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
@@ -356,6 +372,7 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+<<<<<<< HEAD
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -498,3 +515,26 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+=======
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set('n', '<leader>pf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>ph', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>pg', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>ps', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>pd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<F1>", ":lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<F6>", ":lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
+vim.keymap.set("n", "<leader>dt", ":lua require'dap-go'.debug_test()<CR>")
+
+require('dap-go').setup()
+require('dapui').setup()
+require('nvim-dap-virtual-text').setup()
+require('Comment').setup()
+>>>>>>> prima
